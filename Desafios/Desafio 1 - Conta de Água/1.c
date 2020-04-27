@@ -20,14 +20,14 @@ bool print2 = false;
 bool print3 = false;
 bool print4 = false;
 
-int main()
+int main ()
 {
     printf("Qual Foi o Consumo de Agua?\n");
     scanf("%d", &consumo1);
     
     consumo2 = consumo1;  
 
-    if(consumo1 > 0)
+    if (consumo1 > 0)
     {
         valor1 = 7; //Tarifa Basica
         
@@ -37,7 +37,7 @@ int main()
             if (consumo2 > 10 && consumo2 <= 30)
             {
                 print2 = true;
-                while(consumo2 > 10)
+                while (consumo2 > 10)
                 {
                     valor2 += 1;
                     consumo2 -= 1;
@@ -48,7 +48,7 @@ int main()
             else if (consumo2 > 30 && consumo2 <= 100)
             {
                 print3 = true;
-                while(consumo2 > 30)
+                while (consumo2 > 30)
                 {
                     valor3 += 2;
                     consumo2 -= 1;
@@ -59,7 +59,7 @@ int main()
             else if (consumo2 > 100)
             {
                 print4 = true;
-                while(consumo2 > 100)
+                while (consumo2 > 100)
                 {
                     valor4 += 5;
                     consumo2 -= 1;
@@ -91,7 +91,7 @@ int main()
         printf("Valor Total: %d\n", valor_total);
     }
 
-    else if(consumo1 < 0)
+    else if (consumo1 < 0)
     {
         printf("Entrada invalida\n");
     }
