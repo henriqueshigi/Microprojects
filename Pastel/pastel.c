@@ -26,10 +26,10 @@ int total = 0;
 char nome[100];
 char c;
 
-int main() //Cabeçalho da funçao principal
+int main () //Cabeçalho da funçao principal
 {
 
-	while(x == 1) //Loop infinito, ate que o usuario aperte '0'
+	while (x == 1) //Loop infinito, ate que o usuario aperte '0'
 	{
 		printf("\n****PASTEL-INATOR 3000****\n"); //#MARANGON :D
 		printf("1: REALIZAR VENDA\n");
@@ -38,7 +38,7 @@ int main() //Cabeçalho da funçao principal
 		scanf("%d", &input);
 		getchar(); //Pra não pular um case devido ao \n;
 		
-		switch(input)
+		switch (input)
 		{
 			case 0:
 			{
@@ -57,10 +57,10 @@ int main() //Cabeçalho da funçao principal
 				char clean[101];
         		strcpy(clean, nome);
 	            
-	            for(i = 0; clean[i] != '\0'; i++)
+	            for (i = 0; clean[i] != '\0'; i++)
 		        {
 		            //Se for inserida uma letra maiscula o programa a torna minuscula
-		            if(clean[i] >= 'A' && clean[i] <= 'Z' && clean[i] != '\n')
+		            if (clean[i] >= 'A' && clean[i] <= 'Z' && clean[i] != '\n')
 		            {                
 		                clean[i] += 32;
 		            }
@@ -70,7 +70,7 @@ int main() //Cabeçalho da funçao principal
 
 	            nome[strlen(nome)-1] = '\0';
 	            archive = fopen(nome,"a+");
-	            if(archive == NULL)
+	            if (archive == NULL)
 			    {
 			        printf("Nao foi possivel criar o arquivo\n\n");
 			    }
@@ -78,7 +78,7 @@ int main() //Cabeçalho da funçao principal
 	            fprintf(archive,"\nNome: %s", nome);
 	            fclose(archive);
 
-	            while(y == 1)
+	            while (y == 1)
 	            {
 	            	printf("\n****ADD pedido****\n");
 	            	printf("1: PASTEL\n");
@@ -95,8 +95,8 @@ int main() //Cabeçalho da funçao principal
 							
 							printf("\n****FINALIZADO****\n");
 							archive = fopen(nome,"a+");					               					         
-						    fprintf(archive,"\nTOTAL = R$%d\n", total);						           
-						    fclose(archive);
+						 	fprintf(archive,"\nTOTAL = R$%d\n", total);						           
+						   	fclose(archive);
 
 							y = 0;
 							break;
@@ -113,11 +113,11 @@ int main() //Cabeçalho da funçao principal
 							total += valor;
 
 							archive = fopen(nome,"a+");
-							if(qtd ==1) //Singular
+							if (qtd ==1) //Singular
 							{
 								fprintf(archive,"\n%d PASTEL = R$%d\n", qtd, valor);
 							}
-							else if(qtd > 1) //Plural
+							else if (qtd > 1) //Plural
 							{
 								fprintf(archive,"\n%d PASTEIS = R$%d\n", qtd, valor);
 							}					               					         
@@ -138,11 +138,11 @@ int main() //Cabeçalho da funçao principal
 							total += valor;
 
 							archive = fopen(nome,"a+");
-							if(qtd ==1) //Singular
+							if (qtd ==1) //Singular
 							{
 								fprintf(archive,"\n%d AGUA = R$%d\n", qtd, valor);
 							}
-							else if(qtd > 1) //Plural
+							else if (qtd > 1) //Plural
 							{
 								fprintf(archive,"\n%d AGUAS = R$%d\n", qtd, valor);
 							}					               					         
@@ -163,11 +163,11 @@ int main() //Cabeçalho da funçao principal
 							total += valor;
 
 							archive = fopen(nome,"a+");
-							if(qtd == 1) //Singular
+							if (qtd == 1) //Singular
 							{
 								fprintf(archive,"\n%d REFRI = R$%d\n", qtd, valor);
 							}
-							else if(qtd > 1) //Plural
+							else if (qtd > 1) //Plural
 							{
 								fprintf(archive,"\n%d REFRIS = R$%d\n", qtd, valor);
 							}					               					         
@@ -189,11 +189,11 @@ int main() //Cabeçalho da funçao principal
 							total += valor;
 
 							archive = fopen(nome,"a+");
-							if(qtd == 1) //Singular
+							if (qtd == 1) //Singular
 							{
 								fprintf(archive,"\n%d DOCE = R$%d\n", qtd, valor);
 							}
-							else if(qtd > 1) //Plural
+							else if (qtd > 1) //Plural
 							{
 								fprintf(archive,"\n%d DOCES = R$%d\n", qtd, valor);
 							}					               					         
@@ -206,7 +206,7 @@ int main() //Cabeçalho da funçao principal
 						}
 
 						default:
-						if(input2 > 4)
+						if (input2 > 4)
 						{
 							printf("\n****Opcao Invalida, tentar novamente****\n");
 						}
@@ -226,10 +226,10 @@ int main() //Cabeçalho da funçao principal
 
 				char clean[101];
         		strcpy(clean, nome);	            
-	            for(i = 0; clean[i] != '\0'; i++)
+	            for (i = 0; clean[i] != '\0'; i++)
 		        {
 		            //Se for inserida uma letra maiscula o programa a torna minuscula
-		            if(clean[i] >= 'A' && clean[i] <= 'Z' && clean[i] != '\n')
+		            if (clean[i] >= 'A' && clean[i] <= 'Z' && clean[i] != '\n')
 		            {                
 		                clean[i] += 32;
 		            }
@@ -239,13 +239,13 @@ int main() //Cabeçalho da funçao principal
 	            nome[strlen(nome)-1] = '\0';
 	           
 				sik = fopen(nome, "r");
-			    if(sik == NULL)
+			    if (sik == NULL)
 			    {
 			        printf("Nao foi possivel abrir o arquivo\n\n");
 			    }
 
 			    c = fgetc(sik);
-			    while(c != EOF)
+			    while (c != EOF)
 			    {
 			        printf("%c", c); 
 			        c = fgetc(sik); 
@@ -255,11 +255,10 @@ int main() //Cabeçalho da funçao principal
 				printf("\n");				
 
 				break;
-
 			}
 
 			default:
-			if(input > 2)
+			if (input > 2)
 			{
 				printf("****Opcao Invalida, tentar novamente****\n");
 			}
