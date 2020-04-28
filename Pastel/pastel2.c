@@ -28,10 +28,10 @@ int input;
 int input2;
 int input3;
 
-int main() //Cabeçalho da funçao principal
+int main () //Cabeçalho da funçao principal
 {
 
-	while(x == 1) //Loop infinito, ate que o usuario aperte '0'
+	while (x == 1) //Loop infinito, ate que o usuario aperte '0'
 	{
 		printf("\n****PASTEL-INATOR 3000****\n"); //#MARANGON :D
 		printf("1: REALIZAR VENDA\n");
@@ -40,7 +40,7 @@ int main() //Cabeçalho da funçao principal
 		scanf("%d", &input);
 		getchar(); //Pra não pular um case devido ao \n;
 		
-		switch(input)
+		switch (input)
 		{
 			case 0:
 			{
@@ -51,7 +51,7 @@ int main() //Cabeçalho da funçao principal
 			case 1:
 			{
 				printf("\n****REALIZAR VENDA****\n");
-				printf("Digite o nome do cliente:\n ");
+				printf("Digite o nome do cliente: ");
 				fgets(nome,101,stdin);
 
 				nome[strlen(nome)-1] = '\0';
@@ -59,150 +59,148 @@ int main() //Cabeçalho da funçao principal
 				strcpy(nome_disp, nome); //Armeza o nome para ser usado no Display
 				strcat(nome, txt); //Para criar a extensao ".txt"
 
-	            archive = fopen(nome,"a+");
-	            if(archive == NULL)
+                archive = fopen(nome,"a+");
+                if(archive == NULL)
 			    {
 			        printf("Nao foi possivel criar o arquivo\n\n");
+			   	}
+
+                fprintf(archive,"\nNome: %s\n", nome_disp);
+                fclose(archive);
+
+			    while (y == 1)
+			    {
+                    printf("\n****ADD pedido****\n");
+                    printf("1: PASTEL\n");
+                    printf("2: AGUA\n");
+                    printf("3: REFRI\n");
+                    printf("4: DOCE\n");
+                    printf("0: FINALIZAR\n");
+                    scanf("%d", &input2);
+                    getchar(); //Pra não pular um case devido ao \n;
+                    switch (input2)
+                    {
+                        case 0:
+                        {
+
+                            printf("\n****FINALIZADO****\n");
+                            archive = fopen(nome,"a+");					               					         
+                            fprintf(archive,"\nTOTAL = R$%d\n", total);						           
+                            fclose(archive);
+
+                            y = 0;
+                            break;
+                        }
+
+                        case 1:
+                        {
+                            printf("\n****PASTEL****\n");
+                            printf("\n****QTD DE PASTEL: ****\n");
+                            qtd = 0;
+                            valor = 0;
+                            scanf("%d", &qtd);
+                            valor = qtd * 5;
+                            total += valor;
+
+                            archive = fopen(nome,"a+");
+                            if (qtd ==1) //Singular
+                            {
+                                fprintf(archive,"\n%d PASTEL = R$%d\n", qtd, valor);
+                            }
+                            else if (qtd > 1) //Plural
+                            {
+                                fprintf(archive,"\n%d PASTEIS = R$%d\n", qtd, valor);
+                            }					               					         
+
+                            fclose(archive);
+                            qtd = 0;
+                            break;
+                        }
+
+                        case 2:
+                        {
+                            printf("\n****AGUA****\n");
+                            printf("\n****QTD DE AGUA(S): ****\n");
+                            qtd = 0;
+                            valor = 0;
+                            scanf("%d", &qtd);
+                            valor = qtd * 5;
+                            total += valor;
+
+                            archive = fopen(nome,"a+");
+                            if (qtd ==1) //Singular
+                            {
+                                fprintf(archive,"\n%d AGUA = R$%d\n", qtd, valor);
+                            }
+                            else if (qtd > 1) //Plural
+                            {
+                                fprintf(archive,"\n%d AGUAS = R$%d\n", qtd, valor);
+                            }					               					         
+
+                            fclose(archive);
+                            qtd = 0;
+                            break;
+                        }
+
+                        case 3:
+                        {
+                            printf("\n****REFRI****\n");
+                            printf("\n****QTD DE REFRI(S): ****\n");
+                            qtd = 0;
+                            valor = 0;
+                            scanf("%d", &qtd);
+                            valor = qtd * 5;
+                            total += valor;
+
+                            archive = fopen(nome,"a+");
+                            if (qtd == 1) //Singular
+                            {
+                                fprintf(archive,"\n%d REFRI = R$%d\n", qtd, valor);
+                            }
+                            else if (qtd > 1) //Plural
+                            {
+                                fprintf(archive,"\n%d REFRIS = R$%d\n", qtd, valor);
+                            }					               					         
+
+                            fclose(archive);
+                            qtd = 0;
+                            break;
+
+                        }
+
+                        case 4:
+                        {
+                            printf("\n****DOCE****\n");
+                            printf("\n****QTD DE DOCE(S): ****\n");
+                            qtd = 0;
+                            valor = 0;
+                            scanf("%d", &qtd);
+                            valor = qtd * 5;
+                            total += valor;
+
+                            archive = fopen(nome,"a+");
+                            if (qtd == 1) //Singular
+                            {
+                                fprintf(archive,"\n%d DOCE = R$%d\n", qtd, valor);
+                            }
+                            else if (qtd > 1) //Plural
+                            {
+                                fprintf(archive,"\n%d DOCES = R$%d\n", qtd, valor);
+                            }					               					         
+
+                            fclose(archive);
+                            qtd = 0;
+                            break;
+                        }
+
+                        default:
+                        if (input2 > 4)
+                        {
+                            printf("\n****Opcao Invalida, tentar novamente****\n");
+                        }
+
+                    }	
 			    }
-
-	            fprintf(archive,"\nNome: %s\n", nome_disp);
-	            fclose(archive);
-
-	            while(y == 1)
-	            {
-	            	printf("\n****ADD pedido****\n");
-	            	printf("1: PASTEL\n");
-					printf("2: AGUA\n");
-					printf("3: REFRI\n");
-					printf("4: DOCE\n");
-					printf("0: FINALIZAR\n");
-					scanf("%d", &input2);
-					getchar(); //Pra não pular um case devido ao \n;
-					switch(input2)
-					{
-						case 0:
-						{
-							
-							printf("\n****FINALIZADO****\n");
-							archive = fopen(nome,"a+");					               					         
-						    fprintf(archive,"\nTOTAL = R$%d\n", total);						           
-						    fclose(archive);
-
-							y = 0;
-							break;
-						}
-
-						case 1:
-						{
-							printf("\n****PASTEL****\n");
-							printf("\n****QTD DE PASTEL: ****\n");
-							qtd = 0;
-							valor = 0;
-							scanf("%d", &qtd);
-							valor = qtd * 5;
-							total += valor;
-
-							archive = fopen(nome,"a+");
-							if(qtd ==1) //Singular
-							{
-								fprintf(archive,"\n%d PASTEL = R$%d\n", qtd, valor);
-							}
-							else if(qtd > 1) //Plural
-							{
-								fprintf(archive,"\n%d PASTEIS = R$%d\n", qtd, valor);
-							}					               					         
-						    						           
-						    fclose(archive);
-						    qtd = 0;
-						    break;
-						}
-
-						case 2:
-						{
-							printf("\n****AGUA****\n");
-							printf("\n****QTD DE AGUA(S): ****\n");
-							qtd = 0;
-							valor = 0;
-							scanf("%d", &qtd);
-							valor = qtd * 5;
-							total += valor;
-
-							archive = fopen(nome,"a+");
-							if(qtd ==1) //Singular
-							{
-								fprintf(archive,"\n%d AGUA = R$%d\n", qtd, valor);
-							}
-							else if(qtd > 1) //Plural
-							{
-								fprintf(archive,"\n%d AGUAS = R$%d\n", qtd, valor);
-							}					               					         
-						    						           
-						    fclose(archive);
-						    qtd = 0;
-						    break;
-						}
-
-						case 3:
-						{
-							printf("\n****REFRI****\n");
-							printf("\n****QTD DE REFRI(S): ****\n");
-							qtd = 0;
-							valor = 0;
-							scanf("%d", &qtd);
-							valor = qtd * 5;
-							total += valor;
-
-							archive = fopen(nome,"a+");
-							if(qtd == 1) //Singular
-							{
-								fprintf(archive,"\n%d REFRI = R$%d\n", qtd, valor);
-							}
-							else if(qtd > 1) //Plural
-							{
-								fprintf(archive,"\n%d REFRIS = R$%d\n", qtd, valor);
-							}					               					         
-						    						           
-						    fclose(archive);
-						    qtd = 0;
-						    break;
-
-						}
-
-						case 4:
-						{
-							printf("\n****DOCE****\n");
-							printf("\n****QTD DE DOCE(S): ****\n");
-							qtd = 0;
-							valor = 0;
-							scanf("%d", &qtd);
-							valor = qtd * 5;
-							total += valor;
-
-							archive = fopen(nome,"a+");
-							if(qtd == 1) //Singular
-							{
-								fprintf(archive,"\n%d DOCE = R$%d\n", qtd, valor);
-							}
-							else if(qtd > 1) //Plural
-							{
-								fprintf(archive,"\n%d DOCES = R$%d\n", qtd, valor);
-							}					               					         
-						    						           
-						    fclose(archive);
-						    qtd = 0;
-						    break;
-							
-							break;
-						}
-
-						default:
-						if(input2 > 4)
-						{
-							printf("\n****Opcao Invalida, tentar novamente****\n");
-						}
-
-					}	
-	            }
 
 				break;
 			}
@@ -210,35 +208,33 @@ int main() //Cabeçalho da funçao principal
 			case 2:
 			{
 				printf("\n****VER PEDIDO****\n");
-				printf("Digite o nome do cliente:\n ");
-				printf("Exemplo: nome.txt\n");
+				printf("Digite o nome do cliente:\n");
 				fgets(nome,101,stdin);
  		            	            
-	            nome[strlen(nome)-1] = '\0';
-	            strcat(nome, txt); //Para criar a extensao ".txt"
+                nome[strlen(nome)-1] = '\0';
+                strcat(nome, txt); //Para criar a extensao ".txt"
 	           
 				sik = fopen(nome, "r");
-			    if(sik == NULL)
-			    {
-			        printf("Nao foi possivel abrir o arquivo\n\n");
-			    }
+                if (sik == NULL)
+                {
+                    printf("Nao foi possivel abrir o arquivo\n\n");
+                }
 
-			    c = fgetc(sik);
-			    while(c != EOF)
-			    {
-			        printf("%c", c); 
-			        c = fgetc(sik); 
-			    }
+			   	 c = fgetc(sik);
+                while (c != EOF)
+                {
+                    printf("%c", c); 
+                    c = fgetc(sik); 
+                }
 
 				fclose(sik);
 				printf("\n");				
 
 				break;
-
 			}
 
 			default:
-			if(input > 2)
+			if (input > 2)
 			{
 				printf("****Opcao Invalida, tentar novamente****\n");
 			}
